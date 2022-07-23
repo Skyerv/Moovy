@@ -1,0 +1,20 @@
+{
+  "name": "moovy",
+  "version": "1.0.0",
+  "description": "Moovy is a mobile and web app where a movie enthusiast can search for his favorite movies and record audio reviews.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skyerv/Moovy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skyerv/Moovy/issues"
+  },
+  "homepage": "https://github.com/Skyerv/Moovy#readme"
+}
