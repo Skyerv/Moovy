@@ -23,7 +23,7 @@ export const ResultCard = ({movie}) => {
             </div>
 
             <div className="controls">
-                <button className='btn'>Add to My Library</button>
+                <button className='btn2'>Add to My Library</button>
             </div>
         </div>
     </div>

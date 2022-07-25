@@ -7,18 +7,18 @@ export const Header = () => {
         <div className='container'>
             <div className='inner-content'>
                 <div className='brand'>
-                    <Link to="/">Watchlist</Link>
+                    <Link to="/">
+                        <img src='assets/moovy_logo.png' className='moovy_logo' />
+                    </Link>
                 </div>
 
                 <ul className="nav-links">
+                    
                     <li>
-                        <Link to="/">WatchList</Link>
+                        <Link to="/watched" className='btn'>My Library</Link>
                     </li>
                     <li>
-                        <Link to="/watched">Watched</Link>
-                    </li>
-                    <li>
-                        <Link to="/add" className='btn'>Add</Link>
+                        <Link to="/add" className='btn'>Search</Link>
                     </li>
                 </ul>
             </div>

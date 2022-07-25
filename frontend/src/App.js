@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Header />
         <Routes>
-          <Route exact path="/" element={<Watchlist />} />
+          <Route exact path="/" element={<Watched />} />
           <Route path="/watched" element={<Watched />} />
           <Route path="/add" element={<Add />} />
         </Routes>
