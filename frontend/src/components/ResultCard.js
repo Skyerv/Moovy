@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import  { useContext }  from 'react';
+import { GlobalProvider } from '../context/GlobalState';
 
 export const ResultCard = ({movie}) => {
   return (
@@ -23,7 +25,7 @@ export const ResultCard = ({movie}) => {
             </div>
 
             <div className="controls">
-                <button className='btn2'>Add to My Library</button>
+                <button className='btn2' >Add to My Library</button>
             </div>
         </div>
     </div>
