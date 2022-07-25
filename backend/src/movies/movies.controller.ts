@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, ParseIntPipe, UsePipes, ValidationPipe } from '@nestjs/common';
+import { CreateMovieDto } from './dto/movies.dtos';
 import { Movie } from './shared/movie';
 import { MovieService } from './shared/movie.service';
+
 
 @Controller('movies')
 export class MoviesController {
@@ -12,18 +14,19 @@ export class MoviesController {
     }
 
     @Get()
-    async getAll() : Promise<Movie[]> {
+    getAll() {
         return this.movieService.getAll();
-    }
+      }
 
     @Get(':id')
-    async getById(@Param('id') id: number) : Promise<Movie> {
+    getById(@Param('id', ParseIntPipe) id: number) {
         return this.movieService.getById(id);
     }
 
-    @Post()
-    async create(@Body() movie: Movie) : Promise<Movie> {
-        return this.movieService.create(movie);
+    @Post('create')
+    @UsePipes(ValidationPipe)
+    create(@Body() createMovieDto: CreateMovieDto) {
+      return this.movieService.create(createMovieDto);
     }
 
     @Delete()

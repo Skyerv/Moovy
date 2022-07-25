@@ -1,8 +1,11 @@
-import { Movie } from './movie';
+import { Movie } from 'src/typeorm';
+import { Repository } from 'typeorm';
+import { CreateMovieDto } from '../dto/movies.dtos';
 export declare class MovieService {
-    movies: Movie[];
-    getAll(): Movie[];
-    getById(id: number): Movie;
-    create(movie: Movie): Movie;
+    private readonly movieRepository;
+    constructor(movieRepository: Repository<Movie>);
+    getAll(): Promise<Movie[]>;
+    getById(imdb_id: number): Promise<Movie>;
+    create(createMovieDto: CreateMovieDto): Promise<Movie>;
     delete(id: number): void;
 }

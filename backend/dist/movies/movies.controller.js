@@ -14,20 +14,20 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MoviesController = void 0;
 const common_1 = require("@nestjs/common");
-const movie_1 = require("./shared/movie");
+const movies_dtos_1 = require("./dto/movies.dtos");
 const movie_service_1 = require("./shared/movie.service");
 let MoviesController = class MoviesController {
     constructor(movieService) {
         this.movieService = movieService;
     }
-    async getAll() {
+    getAll() {
         return this.movieService.getAll();
     }
-    async getById(id) {
+    getById(id) {
         return this.movieService.getById(id);
     }
-    async create(movie) {
-        return this.movieService.create(movie);
+    create(createMovieDto) {
+        return this.movieService.create(createMovieDto);
     }
     async delete(id) {
         this.movieService.delete(id);
@@ -37,21 +37,22 @@ __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], MoviesController.prototype, "getAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], MoviesController.prototype, "getById", null);
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('create'),
+    (0, common_1.UsePipes)(common_1.ValidationPipe),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [movie_1.Movie]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:paramtypes", [movies_dtos_1.CreateMovieDto]),
+    __metadata("design:returntype", void 0)
 ], MoviesController.prototype, "create", null);
 __decorate([
     (0, common_1.Delete)(),

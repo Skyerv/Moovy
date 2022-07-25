@@ -5,45 +5,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MovieService = void 0;
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("../../typeorm");
+const typeorm_3 = require("typeorm");
 let MovieService = class MovieService {
-    constructor() {
-        this.movies = [
-            { id: 1, title: 'Harry Potter 1', year: "2010", poster: 'aaa', rating: '10', audioreview: 'None' },
-            { id: 2, title: 'Harry Potter 2', year: "2011", poster: 'bbb', rating: '10', audioreview: 'None' },
-            { id: 3, title: 'Harry Potter 3', year: "2012", poster: 'ccc', rating: '10', audioreview: 'None' },
-            { id: 4, title: 'Harry Potter 4', year: "2013", poster: 'ddd', rating: '10', audioreview: 'None' },
-            { id: 5, title: 'Harry Potter 5', year: "2014", poster: 'eee', rating: '10', audioreview: 'None' },
-            { id: 6, title: 'Harry Potter 6', year: "2015", poster: 'fff', rating: '10', audioreview: 'None' },
-            { id: 7, title: 'Harry Potter 7', year: "2016", poster: 'ggg', rating: '10', audioreview: 'None' },
-            { id: 8, title: 'Harry Potter 8', year: "2017", poster: 'hhh', rating: '10', audioreview: 'None' },
-        ];
+    constructor(movieRepository) {
+        this.movieRepository = movieRepository;
     }
     getAll() {
-        return this.movies;
+        return this.movieRepository.find();
     }
-    getById(id) {
-        const movie = this.movies.find((value) => value.id == id);
-        return movie;
+    getById(imdb_id) {
+        return this.movieRepository.findOneBy({ id: imdb_id });
     }
-    create(movie) {
-        let lastId = 0;
-        if (this.movies.length > 0) {
-            lastId = this.movies[this.movies.length - 1].id;
-        }
-        movie.id = lastId + 1;
-        this.movies.push(movie);
-        return movie;
+    create(createMovieDto) {
+        const newMovie = this.movieRepository.create(createMovieDto);
+        return this.movieRepository.save(newMovie);
     }
     delete(id) {
-        const index = this.movies.findIndex((value) => value.id == id);
-        this.movies.splice(index, 1);
     }
 };
 MovieService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(typeorm_2.Movie)),
+    __metadata("design:paramtypes", [typeorm_3.Repository])
 ], MovieService);
 exports.MovieService = MovieService;
 //# sourceMappingURL=movie.service.js.map

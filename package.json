@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Skyerv/Moovy/issues"
   },
-  "homepage": "https://github.com/Skyerv/Moovy#readme"
+  "homepage": "https://github.com/Skyerv/Moovy#readme",
+  "dependencies": {
+    "class-validator": "^0.13.2",
+    "dotenv": "^16.0.1"
+  }
 }
