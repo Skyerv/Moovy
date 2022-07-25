@@ -11,6 +11,14 @@ import Typography from '@mui/material/Typography';
 export const ResultCard2 = ({movie}) => {
   const { addMovieToLibrary, watched } = useContext(GlobalContext);
 
+  let storedMovie = watched.find((o) => o.id === movie.id);
+  let watchDisabled = (storedMovie === movie) ? true : false;
+
+  function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
+
   return (
     <Card sx={{ maxWidth: 200 }}>
       <CardMedia
@@ -25,9 +33,17 @@ export const ResultCard2 = ({movie}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <button className='btn2'
-        onClick={() => addMovieToLibrary(movie)}>Add to My Library</button>
+        <div onClick={() => myFunction()}>
+          <button className='btn2'
+          disabled={watchDisabled}
+          onClick={() => addMovieToLibrary(movie)}>Add to <strong>My Library</strong></button>
+        </div>
+        <div className="popup" >
+          <span className="popuptext" id="myPopup">{movie.Title} was added to My Library!</span>
+        </div>
       </CardActions>
     </Card>
+
+  
   );
 }

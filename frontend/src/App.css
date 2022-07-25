@@ -64,12 +64,36 @@ body {
   background-color: #7ce175;
   color: #323232;
   border-radius: 20px;
-  text-transform: uppercase;
   font-weight: 500;
   display: inline-block;
   font-size: 1rem;
   transition: all 0.3s ease;
   line-height: 1.1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn3 {
+  position: relative;
+  width: 300%;
+  bottom: 0px;
+  padding: 10px 15px;
+  border: solid 1px #d8d8d8;
+  background-color: #fc7373;
+  color: #323232;
+  border-radius: 20px;
+  font-weight: lighter;
+  display: inline-block;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  line-height: 1.1;
+  font-family: Helvetica;
+}
+
+.remove-btn-div {
+  position: relative;
+  width: 33%;
+  bottom: 0;
+  align-items: bottom;
 }
 
 .btn:hover {
@@ -86,12 +110,24 @@ body {
   cursor: pointer;
 }
 
+.btn3:hover {
+  background-color: #c04646;
+  color: #fff;
+  opacity: 1;
+  cursor: pointer;
+}
+
 .btn:focus{
   background-color: #f99844;
   color: #fff;
 }
 
 .btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.btn2:disabled {
   pointer-events: none;
   opacity: 0.5;
 }
@@ -108,6 +144,13 @@ input:focus {
 
 .results-grid {
   display: grid;
+}
+
+.movie-title-lib {
+  line-height: 120%;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 .header-search-icon {
@@ -160,9 +203,76 @@ input:focus {
 
 /* Header Styles */
 header {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
   background-color: var(--white);
   border-bottom: solid 1px #dbdada;
   padding-bottom: 8px;
+  z-index: 1;
+}
+
+.post-cont {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.post-cont:hover .card-image {
+  opacity: 50%;
+}
+
+
+.card:hover {
+  outline: solid 3px var(--secondary);
+  border: none;
+}
+
+.play-btn {
+  width: 50%;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+.space {
+  height: 60px;
+}
+
+.up-part {
+
+}
+
+.custom-btn {
+  background: #fff;
+  width: 130px;
+  height: 50px;
+  padding: 10px 20px;
+  border: 2px solid var(--secondary);
+  border-radius: 40px;
+  font-family: Calibri;
+  font-size: 110%;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: fixed;
+  display: inline-block;
+  right: 3%;
+  bottom: 5%;
+  color: var(--secondary);
+}
+
+.btn-1 {
+  transition: all 0.3s ease;
+}
+.btn-1:hover {
+  background: var(--secondary);
+  color: #fff;
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
 }
 
 header .inner-content {
@@ -319,13 +429,25 @@ header .nav-links li:last-child {
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  grid-template-columns: repeat(3, 3fr);
+  grid-gap: 20px;
+}
+
+.movie-grid2 {
+  display: grid;
+  grid-template-columns: repeat(5, 5fr);
+  grid-gap: 20px;
 }
 
 @media (min-width: 992px) {
   .movie-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 3fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .movie-grid2 {
+    grid-template-columns: repeat(5, 5fr);
   }
 }
 
@@ -394,4 +516,57 @@ header .nav-links li:last-child {
   color: #c4c4c4;
   font-size: 3rem;
   text-align: center;
+}
+
+.popup {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  top: 12%;
+}
+
+@keyframes hide {
+  from { opacity: 1 }
+  to   { opacity: 0 }
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: fixed;
+  z-index: 1;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s, hide 1s 4s forwards;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+.popup .hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }

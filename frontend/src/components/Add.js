@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { ResultCard } from "./ResultCard";
-import { ResultsGrid } from './ResultsGrid'
+import React, { useState, useEffect } from "react";
 import { ResultCard2 } from "./ResultCard2";
+import { TopButton } from './TopButton'
 
 export const Add = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  let movieArr;
 
   const onChange = (e) => {
     e.preventDefault();
@@ -19,7 +17,7 @@ export const Add = () => {
       .then((res) => res.json())
       .then((data) => {
         if(!data.errors){
-            if(data.Search != undefined){
+            if(data.Search !== undefined){
                 setResults(data.Search);
             }
         } else {
@@ -28,10 +26,15 @@ export const Add = () => {
       });
   };
 
-  console.log(results)
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  }, []);
 
   return (
     <div className="add-page">
+      <div className="space">
+        <p>aa</p>
+      </div>
       <div className="search-header">
         <img src="assets/search_icon.png" alt="" className="header-search-icon" />
         <h1>Search</h1>
@@ -49,15 +52,15 @@ export const Add = () => {
           </div>
 
           {results.length > 0 ? (
-            <ul className="results">
+            <div className="movie-grid">
               {results.map((movie) => (
-                <div className="result-grid">
-                  <div key={movie.imdbID} className="item">
+                <div className="result-grid" key={movie.imdbID}>
+                  <div className="item">
                     <ResultCard2 movie={movie} />
                   </div>
                 </div>
               ))}
-            </ul>
+            </div>
           ) : (
             <div className="find-container">
               <div className="empty">
@@ -67,6 +70,9 @@ export const Add = () => {
             </div>
               
           )}
+        </div>
+        <div>
+          <TopButton />
         </div>
       </div>
     </div>

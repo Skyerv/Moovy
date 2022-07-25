@@ -1,17 +1,34 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { GlobalContext } from '../context/GlobalState'
+import { MovieCard } from './MovieCard';
+import { ResultCard2 } from './ResultCard2';
+import { TopButton } from './TopButton';
 
 export const Watched = () => {
-  let moviesArr = [];
+  const {watched} = useContext(GlobalContext);
+
+  const [open, setOpen] = React.useState(false);
 
   return (
     <div className="lib-container">
+      <div className='space'>
+        <p>aaa</p>
+      </div>
       <div className='search-header' id='lib-header'>
           <h1>My Library</h1>
       </div>
 
       <div className="content">
-        {moviesArr.length > 0 ? (
-      console.log('oi')
+        {watched.length > 0 ? (
+          <div className="movie-page">
+            <div className='container'>
+              <div className="movie-grid2">
+                {watched.map((movie) => (
+                  <MovieCard movie={movie} />
+                ))}
+              </div>
+            </div>
+          </div>
       ) : (
         <div className="find-container">
             <div className="empty2">
@@ -21,6 +38,7 @@ export const Watched = () => {
           </div>
       ) } 
       </div>
+      <TopButton />
     </div>
 
   )

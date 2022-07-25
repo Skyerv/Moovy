@@ -8,7 +8,7 @@ export const Header = () => {
             <div className='inner-content'>
                 <div className='brand'>
                     <Link to="/">
-                        <img src='assets/moovy_logo.png' className='moovy_logo' />
+                        <img src='assets/moovy_logo.png' className='moovy_logo' alt="moovy-logo"/>
                     </Link>
                 </div>
 

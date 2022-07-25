@@ -5,8 +5,9 @@ import AppReducer from "./AppReducer";
 const initialState = {
   watched: localStorage.getItem("watched")
     ? JSON.parse(localStorage.getItem("watched"))
-    : []
+    : [],
 };
+
 
 // create context
 export const GlobalContext = createContext(initialState);
@@ -14,6 +15,11 @@ export const GlobalContext = createContext(initialState);
 // provider components
 export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+  console.log(state)
+
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify(state.watched));
+  }, [state])
 
   useEffect(() => {
     localStorage.setItem("watched", JSON.stringify(state.watched));

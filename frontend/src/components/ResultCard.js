@@ -1,6 +1,4 @@
 import React from 'react';
-import  { useContext }  from 'react';
-import { GlobalProvider } from '../context/GlobalState';
 
 export const ResultCard = ({movie}) => {
   return (
