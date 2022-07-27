@@ -7,7 +7,7 @@ export const Watched = () => {
   console.log('oi')
   const { getMoviesFromLibrary } = useContext(GlobalContext);
   let moviesArr = getMoviesFromLibrary();
-
+  
   return (
     
     <div className="lib-container">

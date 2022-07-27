@@ -70,7 +70,6 @@ export const MovieCard = ({movie}) => {
           <div className='remove-btn-div'>
             <button className='btn3'
             onClick={() => onclickEvent(movie.imdb_id)}>Remove</button>
-            
           </div>
         </CardActions>
       </Card>

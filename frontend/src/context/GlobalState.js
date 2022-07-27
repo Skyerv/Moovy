@@ -15,7 +15,6 @@ export const GlobalContext = createContext(initialState);
 // provider components
 export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
-  console.log(state)
 
   useEffect(() => {
     localStorage.setItem('watched', JSON.stringify(state.watched));
@@ -50,10 +49,12 @@ export const GlobalProvider = (props) => {
       method: "GET",
     }
 
-    backendClient.request(reqOptionsPost).then(function (response) {
-      setMoviesArr(response.data);
-    }); 
-
+    React.useEffect(() => {
+      backendClient.request(reqOptionsPost).then(function (response) {
+        setMoviesArr(response.data);
+      }); 
+   }, [state]);
+    
     return moviesArr;
   };
 
