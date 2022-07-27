@@ -1,15 +1,15 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 import { MovieCard } from './MovieCard';
-import { ResultCard2 } from './ResultCard2';
 import { TopButton } from './TopButton';
 
 export const Watched = () => {
-  const {watched} = useContext(GlobalContext);
-
-  const [open, setOpen] = React.useState(false);
+  console.log('oi')
+  const { getMoviesFromLibrary } = useContext(GlobalContext);
+  let moviesArr = getMoviesFromLibrary();
 
   return (
+    
     <div className="lib-container">
       <div className='space'>
         <p>aaa</p>
@@ -19,13 +19,13 @@ export const Watched = () => {
       </div>
 
       <div className="content">
-        {watched.length > 0 ? (
+        {moviesArr.length > 0 ? (
           <div className="movie-page">
             <div className='container'>
               <div className="movie-grid2">
-                {watched.map((movie) => (
-                  <MovieCard movie={movie} />
-                ))}
+                  {moviesArr.map((movie) => (
+                    <MovieCard movie={movie} />
+                  ))}
               </div>
             </div>
           </div>

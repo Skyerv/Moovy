@@ -13,6 +13,7 @@ export default (state, action) => {
           ...state,
           watched: state.watched.filter((movie) => movie.imdbID !== action.payload),
         };
+
       default:
         return state;
     }

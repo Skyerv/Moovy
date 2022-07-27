@@ -6,7 +6,6 @@ import { Add } from './components/Add'
 import './App.css';
 import './lib/font-awesome/css/all.min.css'
 import { GlobalProvider } from './context/GlobalState'
-import axios from 'axios';
 
 function App() {
   return (

@@ -519,8 +519,11 @@ header .nav-links li:last-child {
 }
 
 .popup {
+  margin: 0 auto;
   position: absolute;
+  align-items: center;
   display: inline-block;
+  justify-content: center;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;

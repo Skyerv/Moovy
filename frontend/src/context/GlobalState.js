@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer, useEffect, useState } from "react";
 import AppReducer from "./AppReducer";
 import { backendClient } from '../api-clients'
 
@@ -21,10 +21,6 @@ export const GlobalProvider = (props) => {
     localStorage.setItem('watched', JSON.stringify(state.watched));
   }, [state])
 
-  useEffect(() => {
-    localStorage.setItem("watched", JSON.stringify(state.watched));
-  }, [state]);
-
   // actions
   const addMovieToLibrary = (movie) => {
     dispatch({ type: "ADD_MOVIE_TO_LIBRARY", payload: movie });
@@ -43,9 +39,24 @@ export const GlobalProvider = (props) => {
     }
 
     backendClient.request(reqOptionsPost).then(function (response) {
-      console.log(response.data);
     });
   };
+
+  const getMoviesFromLibrary = () => {
+    const [moviesArr, setMoviesArr] = useState([]);
+    
+    let reqOptionsPost = {
+      url: `/movies/`,
+      method: "GET",
+    }
+
+    backendClient.request(reqOptionsPost).then(function (response) {
+      setMoviesArr(response.data);
+    }); 
+
+    return moviesArr;
+  };
+
 
   const removeFromLibrary = (imbd_id) => {
     dispatch({ type: "REMOVE_FROM_LIBRARY", payload: imbd_id });
@@ -56,7 +67,6 @@ export const GlobalProvider = (props) => {
     }
 
     backendClient.request(reqOptionsPost).then(function (response) {
-      console.log(response.data);
     });
   };
 
@@ -66,6 +76,7 @@ export const GlobalProvider = (props) => {
         watched: state.watched,
         addMovieToLibrary,
         removeFromLibrary,
+        getMoviesFromLibrary,
       }}
     >
       {props.children}

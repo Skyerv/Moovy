@@ -28,47 +28,53 @@ export const MovieCard = ({movie}) => {
   };
 
 
+  const onclickEvent = (imbd_id) => {
+    removeFromLibrary(imbd_id);
+    myFunction();
+  }
 
   return (
-    <Card sx={{ maxWidth: 200 }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='card'> 
-      <div className='post-cont'>
-        <CardMedia className='card-image'
-            component="img"
-            height="260"
-            image={movie.Poster}
-            alt={`${movie.Title} Poster`}
-            position= "relative"
-            top= "0"
-            left= "0"
-        />
-        <CardMedia>
-        {isHovering && (
-            <div className='play-img'>
-                <img src='assets/play-button.png' className='play-btn'></img>
-            </div>
-            )}
-        </CardMedia>
-      </div>
-      <CardContent>
-      <Typography gutterBottom variant="h7" component="div">
-          {movie.Title}
-        </Typography>
-        <Typography gutterBottom variant="h7" component="div">
-          Rating: 10.0
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <div onClick={() => myFunction()} className='remove-btn-div'>
-          <button className='btn3'
-          onClick={() => removeFromLibrary(movie.imdbID)}>Remove</button>
-        </div>
-        <div className="popup" >
-          <span className="popuptext" id="myPopup">{movie.Title} was removed from your library.</span>
-        </div>
-      </CardActions>
-      
-    </Card>
     
-  
+    <div>
+      <div className="popup l" >
+            <span className="popuptext" id="myPopup">{movie.title} was removed from your library.</span>
+      </div>
+      <Card sx={{ maxWidth: 200 }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='card'> 
+        <div className='post-cont'>
+          <CardMedia className='card-image'
+              component="img"
+              height="260"
+              image={movie.poster}
+              alt={`${movie.title} Poster`}
+              position= "relative"
+              top= "0"
+              left= "0"
+          />
+          <CardMedia>
+          {isHovering && (
+              <div className='play-img'>
+                  <img src='assets/play-button.png' className='play-btn'></img>
+              </div>
+              )}
+          </CardMedia>
+        </div>
+        <CardContent>
+        <Typography gutterBottom variant="h7" component="div">
+            {movie.title}
+          </Typography>
+          <Typography gutterBottom variant="h7" component="div">
+            Rating: 10.0
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <div className='remove-btn-div'>
+            <button className='btn3'
+            onClick={() => onclickEvent(movie.imdb_id)}>Remove</button>
+            
+          </div>
+        </CardActions>
+      </Card>
+    </div>
+    
   );
 }
