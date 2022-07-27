@@ -4,8 +4,10 @@ const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const dotenv = require("dotenv");
 async function bootstrap() {
-    const app = await core_1.NestFactory.create(app_module_1.AppModule);
-    await app.listen(3000);
+    const app = await core_1.NestFactory.create(app_module_1.AppModule, {
+        cors: true,
+    });
+    await app.listen(8000);
     dotenv.config();
 }
 bootstrap();

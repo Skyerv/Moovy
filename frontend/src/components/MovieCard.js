@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-
 export const MovieCard = ({movie}) => {
     const {
         removeFromLibrary,
@@ -27,6 +26,8 @@ export const MovieCard = ({movie}) => {
   const handleMouseOut = () => {
     setIsHovering(false);
   };
+
+
 
   return (
     <Card sx={{ maxWidth: 200 }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='card'> 

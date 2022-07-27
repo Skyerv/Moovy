@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('movies')
 export class Movie {
   @PrimaryGeneratedColumn({
     type: 'bigint',
@@ -11,9 +11,10 @@ export class Movie {
 
     @Column({
         name: 'imbd_id',
-        nullable: false,
+        type: 'varchar',
+        length: 100,
       })
-      imdb_id: number;
+      imdb_id: string;
 
       @Column({
         name: 'std_title',

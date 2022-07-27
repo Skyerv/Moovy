@@ -24,14 +24,15 @@ let MovieService = class MovieService {
     getAll() {
         return this.movieRepository.find();
     }
-    getById(imdb_id) {
-        return this.movieRepository.findOneBy({ id: imdb_id });
+    getById(id) {
+        return this.movieRepository.findOneBy({ id: id });
     }
     create(createMovieDto) {
         const newMovie = this.movieRepository.create(createMovieDto);
         return this.movieRepository.save(newMovie);
     }
     delete(id) {
+        return this.movieRepository.delete({ imdb_id: id });
     }
 };
 MovieService = __decorate([

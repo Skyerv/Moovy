@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
+const core_1 = require("@nestjs/core");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const movies_module_1 = require("./movies/movies.module");
@@ -32,12 +33,13 @@ AppModule = __decorate([
                     database: configService.get('DB_NAME'),
                     entities: typeorm_2.default,
                     synchronize: true,
+                    logging: ["query"],
                 }),
                 inject: [config_1.ConfigService],
             }),
         ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [app_service_1.AppService, { provide: core_1.APP_PIPE, useClass: common_1.ValidationPipe }],
     })
 ], AppModule);
 exports.AppModule = AppModule;

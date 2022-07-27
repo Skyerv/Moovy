@@ -14,8 +14,8 @@ export class MoviesController {
     }
 
     @Get()
-    getAll() {
-        return this.movieService.getAll();
+    async getAll() {
+        return await this.movieService.getAll();
       }
 
     @Get(':id')
@@ -24,13 +24,13 @@ export class MoviesController {
     }
 
     @Post('create')
-    @UsePipes(ValidationPipe)
     create(@Body() createMovieDto: CreateMovieDto) {
+      console.log('criou', createMovieDto)
       return this.movieService.create(createMovieDto);
     }
 
-    @Delete()
-    async delete(@Param('id') id: number) {
-        this.movieService.delete(id);
+    @Delete(':id')
+    async delete(@Param('id') id: string) {
+        await this.movieService.delete(id);
     }
 }

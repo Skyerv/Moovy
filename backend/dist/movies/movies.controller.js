@@ -20,24 +20,25 @@ let MoviesController = class MoviesController {
     constructor(movieService) {
         this.movieService = movieService;
     }
-    getAll() {
-        return this.movieService.getAll();
+    async getAll() {
+        return await this.movieService.getAll();
     }
     getById(id) {
         return this.movieService.getById(id);
     }
     create(createMovieDto) {
+        console.log('criou', createMovieDto);
         return this.movieService.create(createMovieDto);
     }
     async delete(id) {
-        this.movieService.delete(id);
+        await this.movieService.delete(id);
     }
 };
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], MoviesController.prototype, "getAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
@@ -48,17 +49,16 @@ __decorate([
 ], MoviesController.prototype, "getById", null);
 __decorate([
     (0, common_1.Post)('create'),
-    (0, common_1.UsePipes)(common_1.ValidationPipe),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [movies_dtos_1.CreateMovieDto]),
     __metadata("design:returntype", void 0)
 ], MoviesController.prototype, "create", null);
 __decorate([
-    (0, common_1.Delete)(),
+    (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], MoviesController.prototype, "delete", null);
 MoviesController = __decorate([

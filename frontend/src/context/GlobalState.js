@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
+import { backendClient } from '../api-clients'
 
 // initial state
 const initialState = {
@@ -7,7 +8,6 @@ const initialState = {
     ? JSON.parse(localStorage.getItem("watched"))
     : [],
 };
-
 
 // create context
 export const GlobalContext = createContext(initialState);
@@ -28,10 +28,36 @@ export const GlobalProvider = (props) => {
   // actions
   const addMovieToLibrary = (movie) => {
     dispatch({ type: "ADD_MOVIE_TO_LIBRARY", payload: movie });
+    
+    let reqOptionsPost = {
+      url: `/movies/create/`,
+      method: "POST",
+      data: {
+        "imdb_id": movie.imdbID,
+        "title": movie.Title,
+        "year": movie.Year,
+        "poster": movie.Poster,
+        "rating": "Unknwown",
+        "audioreview": "empty"
+      },
+    }
+
+    backendClient.request(reqOptionsPost).then(function (response) {
+      console.log(response.data);
+    });
   };
 
-  const removeFromLibrary = (id) => {
-    dispatch({ type: "REMOVE_FROM_LIBRARY", payload: id });
+  const removeFromLibrary = (imbd_id) => {
+    dispatch({ type: "REMOVE_FROM_LIBRARY", payload: imbd_id });
+
+    let reqOptionsPost = {
+      url: `/movies/${imbd_id}`,
+      method: "DELETE",
+    }
+
+    backendClient.request(reqOptionsPost).then(function (response) {
+      console.log(response.data);
+    });
   };
 
   return (

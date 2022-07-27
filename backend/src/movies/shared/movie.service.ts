@@ -17,8 +17,8 @@ export class MovieService {
         return this.movieRepository.find();
     }
 
-    getById(imdb_id: number){
-        return this.movieRepository.findOneBy({id: imdb_id});
+    getById(id: number){
+        return this.movieRepository.findOneBy({id: id});
     }
 
     create(createMovieDto: CreateMovieDto){
@@ -26,7 +26,7 @@ export class MovieService {
         return this.movieRepository.save(newMovie);
     }
 
-    delete(id: number){
-        
+    delete(id: string){
+        return this.movieRepository.delete({imdb_id: id});
     }
 }

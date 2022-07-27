@@ -6,5 +6,5 @@ export declare class MoviesController {
     getAll(): Promise<import("../typeorm").Movie[]>;
     getById(id: number): Promise<import("../typeorm").Movie>;
     create(createMovieDto: CreateMovieDto): Promise<import("../typeorm").Movie>;
-    delete(id: number): Promise<void>;
+    delete(id: string): Promise<void>;
 }

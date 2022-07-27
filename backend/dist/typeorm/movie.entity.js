@@ -23,9 +23,10 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({
         name: 'imbd_id',
-        nullable: false,
+        type: 'varchar',
+        length: 100,
     }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Movie.prototype, "imdb_id", void 0);
 __decorate([
     (0, typeorm_1.Column)({
@@ -68,7 +69,7 @@ __decorate([
     __metadata("design:type", String)
 ], Movie.prototype, "audioreview", void 0);
 Movie = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)('movies')
 ], Movie);
 exports.Movie = Movie;
 //# sourceMappingURL=movie.entity.js.map

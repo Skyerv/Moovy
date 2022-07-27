@@ -15,11 +15,7 @@ class CreateMovieDto {
 }
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], CreateMovieDto.prototype, "id", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], CreateMovieDto.prototype, "imdb_id", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),

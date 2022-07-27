@@ -5,7 +5,7 @@ export declare class MovieService {
     private readonly movieRepository;
     constructor(movieRepository: Repository<Movie>);
     getAll(): Promise<Movie[]>;
-    getById(imdb_id: number): Promise<Movie>;
+    getById(id: number): Promise<Movie>;
     create(createMovieDto: CreateMovieDto): Promise<Movie>;
-    delete(id: number): void;
+    delete(id: string): Promise<import("typeorm").DeleteResult>;
 }

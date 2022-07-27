@@ -2,11 +2,10 @@
 import { IsNotEmpty } from "class-validator";
 
 export class CreateMovieDto {
-    @IsNotEmpty()
     id: number;
 
     @IsNotEmpty()
-    imdb_id: number;
+    imdb_id: string;
   
     @IsNotEmpty()
     title: string;

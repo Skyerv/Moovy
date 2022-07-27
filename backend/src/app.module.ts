@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
+import { APP_PIPE } from '@nestjs/core'
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MoviesController } from './movies/movies.controller';
@@ -26,11 +27,12 @@ import * as dotenv from 'dotenv'
         database: configService.get('DB_NAME'),
         entities: entities,
         synchronize: true,
+        logging: ["query"],
       }),
       inject: [ConfigService],
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, {provide: APP_PIPE, useClass: ValidationPipe}],
 })
 export class AppModule {}
