@@ -33,13 +33,15 @@ export const MovieCard = ({movie}) => {
     myFunction();
   }
 
+  let movie1;
+
   return (
     
     <div>
       <div className="popup l" >
             <span className="popuptext" id="myPopup">{movie.title} was removed from your library.</span>
       </div>
-      <Card sx={{ maxWidth: 200 }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='card'> 
+      <Card sx={{ maxWidth: 200 }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className='card hvr-grow'> 
         <div className='post-cont'>
           <CardMedia className='card-image'
               component="img"

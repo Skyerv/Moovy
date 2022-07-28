@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import 'animate.css';
 
 export const Header = () => {
   return (
@@ -8,12 +9,11 @@ export const Header = () => {
             <div className='inner-content'>
                 <div className='brand'>
                     <Link to="/">
-                        <img src='assets/moovy_logo.png' className='moovy_logo' alt="moovy-logo"/>
+                        <img src='assets/moovy_logo2.png' className='moovy_logo bounce' alt="moovy-logo"/>
                     </Link>
                 </div>
 
                 <ul className="nav-links">
-                    
                     <li>
                         <Link to="/watched" className='btn'>My Library</Link>
                     </li>

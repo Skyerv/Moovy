@@ -4,13 +4,10 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core'
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MoviesController } from './movies/movies.controller';
-import { MovieService } from './movies/shared/movie.service';
 import { MoviesModule } from './movies/movies.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import entities from './typeorm';
-import * as dotenv from 'dotenv'
 
 @Module({
   imports: [

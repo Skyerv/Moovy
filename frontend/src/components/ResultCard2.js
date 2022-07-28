@@ -20,7 +20,12 @@ export const ResultCard2 = ({movie}) => {
   }
 
   return (
-    <Card sx={{ maxWidth: 200 }}>
+    <div>
+        <div className="popup" >
+          <span className="popuptext" id="myPopup">{movie.Title} was added to My Library!</span>
+        </div>
+
+    <Card sx={{ maxWidth: 200 }} className='hvr-grow'>
       <CardMedia
         component="img"
         height="260"
@@ -38,12 +43,9 @@ export const ResultCard2 = ({movie}) => {
           disabled={watchDisabled}
           onClick={() => addMovieToLibrary(movie)}>Add to <strong>My Library</strong></button>
         </div>
-        <div className="popup" >
-          <span className="popuptext" id="myPopup">{movie.Title} was added to My Library!</span>
-        </div>
       </CardActions>
     </Card>
+    </div>
 
-  
   );
 }

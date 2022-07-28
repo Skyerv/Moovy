@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
 
 :root {
   --primary: #032541;
@@ -7,9 +8,27 @@
 }
 
 body {
+  background: rgb(250, 250, 250);
   font-family: "Source Sans Pro", sans-serif;
   padding: 0;
   margin: 0;
+}
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
 }
 
 .container {
@@ -44,18 +63,47 @@ body {
   box-sizing: border-box;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  color: white;
+  text-align: center;
+}
+
+.footer-text {
+  flex: 1 0 auto;
+  padding: 0.05%;
+}
+
+.footer-text a {
+  color: white;
+}
+
+.footer-text a:after {
+  color: white;
+}
+
 .btn {
-  padding: 10px 15px;
-  border: solid 1px #d8d8d8;
-  background-color: var(--white);
-  color: #323232;
-  border-radius: 20px;
-  text-transform: uppercase;
-  font-weight: 700;
+  background-color: #fbeee0;
+  border-radius: 30px;
+  box-shadow: #bd7200 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
   display: inline-block;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  line-height: 1.1;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 35px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border: solid 1px black;
 }
 
 .btn2 {
@@ -97,7 +145,7 @@ body {
 }
 
 .btn:hover {
-  background-color: var(--secondary);
+  background-color: rgb(254, 145, 51);
   color: #fff;
   opacity: 1;
   cursor: pointer;
@@ -140,6 +188,7 @@ input:focus {
   margin-left: 10%;
   padding-bottom: 0px;
   justify-content: flex-start;
+  display: flex;
 }
 
 .results-grid {
@@ -157,7 +206,14 @@ input:focus {
   height: 35px;
   position: absolute;
   left: 17%;
-  margin-top: 0.2%;
+  margin-top: 1.7%;
+}
+
+.header-library-icon {
+  height: 35px;
+  position: relative;
+  margin-top: 1.7%;
+  left: 0.5%;
 }
 
 .find-container {
@@ -206,7 +262,8 @@ header {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
-  background-color: var(--white);
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
   border-bottom: solid 1px #dbdada;
   padding-bottom: 8px;
   z-index: 1;
@@ -222,10 +279,9 @@ header {
   opacity: 50%;
 }
 
-
 .card:hover {
-  outline: solid 3px var(--secondary);
-  border: none;
+  outline: solid 1px black;
+
 }
 
 .play-btn {
@@ -237,10 +293,6 @@ header {
 
 .space {
   height: 60px;
-}
-
-.up-part {
-
 }
 
 .custom-btn {
@@ -258,7 +310,7 @@ header {
   position: fixed;
   display: inline-block;
   right: 3%;
-  bottom: 5%;
+  bottom: 13%;
   color: var(--secondary);
 }
 
@@ -288,15 +340,40 @@ header .inner-content {
   align-items: center;
 }
 
+.bounce:hover {
+  animation: bounce 1s ease;
+}
+
 header a {
   color: var(--white);
   font-size: 1.25rem;
   text-decoration: none;
   transition: all 0.3s ease;
+  -webkit-animation-duration: 1s;
+   animation-duration: 1s; 
+  -webkit-animation-fill-mode: both; 
+   animation-fill-mode: both; 
+}
+
+@keyframes bounce {
+    5% { transform:translateY(0%); }
+    15% { transform:translateY(-15%); }
+    25% { transform:translateY(0%); }
+    30% { transform:translateY(-7%); }
+    33% { transform:translateY(0%); }
+    36% { transform:translateY(-3%); }
+    40% { transform:translateY(0); }
 }
 
 header a:hover {
-  opacity: 0.7;
+  animation: bounce 2s ease infinite;
+}
+
+.ini-title {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 header .brand a {
@@ -304,7 +381,32 @@ header .brand a {
   font-size: 1.5rem;
 }
 
+.first-page-container {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.wallpapersden.com/image/download/minimalist-orange-sunset_a21oZW6UmZqaraWkpJRmbmdlrWZlbWU.jpg");
+}
+
+.or-img {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
 header .nav-links {
+  justify-content: flex-start;
+  padding-left: 5%;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.central-block {
+  align-items: center;
+}
+
+.ini-links {
   justify-content: flex-start;
   padding-left: 5%;
   margin: 0;
@@ -456,7 +558,6 @@ header .nav-links li:last-child {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  border: 0;
   display: block;
 }
 
@@ -475,9 +576,23 @@ header .nav-links li:last-child {
   transition: all 0.3s ease;
 }
 
-.movie-card:hover .overlay {
-  border: 3px solid var(--secondary);
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
 }
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.05);
+}
+
 
 .movie-card .inner-card-controls {
   display: inline;
@@ -548,13 +663,14 @@ header .nav-links li:last-child {
   padding: 8px 0;
   position: fixed;
   z-index: 1;
+  left: 32%;
 }
 
 /* Toggle this class - hide and show the popup */
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s, hide 1s 4s forwards;
+  animation: fadeIn 1s, hide 1s 3s forwards;
 }
 
 /* Add animation (fade in the popup) */

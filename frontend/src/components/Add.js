@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ResultCard2 } from "./ResultCard2";
 import { TopButton } from './TopButton'
+import { Footer } from './Footer'
 
 export const Add = () => {
   const [query, setQuery] = useState("");
@@ -75,6 +76,7 @@ export const Add = () => {
           <TopButton />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

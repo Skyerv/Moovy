@@ -2,9 +2,9 @@ import React, {useContext, useEffect } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 import { MovieCard } from './MovieCard';
 import { TopButton } from './TopButton';
+import { Footer } from './Footer'
 
 export const Watched = () => {
-  console.log('oi')
   const { getMoviesFromLibrary } = useContext(GlobalContext);
   let moviesArr = getMoviesFromLibrary();
   
@@ -16,6 +16,7 @@ export const Watched = () => {
       </div>
       <div className='search-header' id='lib-header'>
           <h1>My Library</h1>
+          <img src="assets/library-icon.png" alt="" className="header-library-icon" />
       </div>
 
       <div className="content">
@@ -39,6 +40,7 @@ export const Watched = () => {
       ) } 
       </div>
       <TopButton />
+      <Footer />
     </div>
 
   )
